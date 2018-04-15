@@ -1,0 +1,17 @@
+﻿@{ 
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    Bulk Upload
+}
+@section ContentBody{ 
+    <div>
+        <a href="/Employee/Index">Back</a>
+        <form asp-controller="BulkUpload" asp-action="UploadFileViaModel" method="post"
+              enctype="multipart/form-data">
+            <input type="file" name="FileToUpload" />
+            <button type="submit">Upload File (model)</button>
+        </form>
+    </div>
+}

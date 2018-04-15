@@ -1,0 +1,25 @@
+﻿@model UserDetails
+
+@{
+    ViewBag.Title = "Login";
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/jquery.validation.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}
+
+<h2>Login</h2>
+
+<div>
+    @Html.ValidationMessage("CredentialError", new {style = "color:red;"})
+    @using (Html.BeginForm("DoLogin", "Authentication", FormMethod.Post))
+    {
+        @Html.LabelFor(c => c.UserName)
+        @Html.TextBoxFor(x => x.UserName)
+        @Html.ValidationMessageFor(x => x.UserName)
+        <br/>
+        @Html.LabelFor(c => c.Password)
+        @Html.PasswordFor(x => x.Password)
+        <br/>
+        <input type="submit" name="BtnSubmit" value="Login"/>
+    }
+</div>

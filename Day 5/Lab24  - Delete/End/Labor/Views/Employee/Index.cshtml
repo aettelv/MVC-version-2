@@ -1,0 +1,37 @@
+﻿@model Labor.ViewModels.EmployeeListViewModel
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+
+<div style="text-align: right">
+    Hello, @Model.UserName
+    <a href="/Authentication/Logout">Logout</a>
+</div>
+
+<h2>Employees</h2>
+<div>
+    <p>
+        @await Component.InvokeAsync("NewLink")
+    </p>
+    <table class="table">
+        <tr>
+            <th>Employee Name</th>
+            <th>Salary</th>
+        </tr>
+        @foreach (var item in Model.Employees)
+        {
+            <tr>
+                <td>@item.EmployeeName</td>
+                <td style="background-color: @item.SalaryColor">@item.Salary</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    @{
+        Html.RenderPartial("Footer", Model.FooterData);
+    }
+</div>
